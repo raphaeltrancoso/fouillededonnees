@@ -13,6 +13,9 @@ import scipy as sp
 import sklearn as skl
 
 import matplotlib.pyplot as plt
+import matplotlib as matplot
+import seaborn as sns
+
 
 # lit le fichier de données de type csv
 data = pd.read_csv('trafic-annuel-entrant-par-station-du-reseau-ferre-2016.csv', sep = ';')
@@ -123,3 +126,14 @@ print("Trafic annuel dans le 17eme arrondissement de Paris : ", average_traffic_
 print("Trafic annuel dans le 18eme arrondissement de Paris : ", average_traffic_arr18)
 print("Trafic annuel dans le 19eme arrondissement de Paris : ", average_traffic_arr19)
 print("Trafic annuel dans le 20eme arrondissement de Paris : ", average_traffic_arr20)
+
+# Initialise les couleurs du graphique
+color_types = ['#78C850','#F08030','#6890F0','#A8B820','#A8A878','#A040A0','#F8D030',  
+                '#E0C068','#EE99AC','#C03028','#F85888','#B8A038','#705898','#98D8D8','#7038F8', '#2B5973','#AF186E','#9B972A']
+
+# Cree le graphique
+sns.barplot(x=data['Correspondance_1'], y=data['Trafic'], data=data, palette=color_types).set_title('Repartions des usagers par ligne')
+
+# Rotate x-labels
+plt.xticks(rotation=-45)
+plt.show()
