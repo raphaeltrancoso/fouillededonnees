@@ -120,3 +120,18 @@ print("Trafic annuel moyen du Metro 14 : ", average_traffic_M14)
 # print("Trafic annuel dans le 18eme arrondissement de Paris : ", average_traffic_arr18)
 # print("Trafic annuel dans le 19eme arrondissement de Paris : ", average_traffic_arr19)
 # print("Trafic annuel dans le 20eme arrondissement de Paris : ", average_traffic_arr20)
+
+import matplotlib.pyplot as plt
+import matplotlib as matplot
+import seaborn as sns
+
+# Initialise les couleurs du graphique
+color_types = ['#78C850','#F08030','#6890F0','#A8B820','#A8A878','#A040A0','#F8D030',  
+                '#E0C068','#EE99AC','#C03028','#F85888','#B8A038','#705898','#98D8D8','#7038F8', '#2B5973','#AF186E','#9B972A']
+
+# Cree le graphique
+sns.barplot(x=df['Correspondance_1'], y=df['Trafic'], data=df, palette=color_types).set_title('Repartions des usagers par ligne')
+
+# Rotate x-labels
+plt.xticks(rotation=-45)
+plt.show()
