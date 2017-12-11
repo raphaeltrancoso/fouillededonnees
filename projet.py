@@ -1,10 +1,12 @@
 # Authors :
-# 
-# Raphael Trancoso
-# Cedric Laguerre 
+# 	Raphael Trancoso
+# 	Cedric Laguerre 
 #
-# projet Fouille de Données 
-# sujet : trafic réseaux ferrés Paris
+# Projet Fouille de Données 
+# Sujet : trafic réseaux ferrés Paris
+#
+# Données statistiques diverses concernant le trafic 
+# des réseaux ferrés parisien
 
 # utilisation de la libraire pandas
 import pandas as pd
@@ -25,6 +27,9 @@ del data['Column 12']
 del data['Column 13']
 del data['Column 14']
 del data['Column 15']
+new_columns = data.columns.values; 
+new_columns[4] = 'Ligne'; 
+data.columns = new_columns
 
 # moyenne du trafic annuel de toutes les lignes dans Paris
 average_traffic_all = data['Trafic'].mean()
@@ -36,7 +41,7 @@ average_traffic_RER = network.get_group('RER')['Trafic'].mean()
 average_traffic_M = network.get_group('Métro')['Trafic'].mean()
 
 # on prend la colonne du nom du reseau ferré
-network = data.groupby('Correspondance_1')
+network = data.groupby('Ligne')
 # moyennes du trafic annuel pour chaque ligne
 average_traffic_RERA = network.get_group('A')['Trafic'].mean()
 average_traffic_RERB = network.get_group('B')['Trafic'].mean()
@@ -128,12 +133,14 @@ print("Trafic annuel dans le 19eme arrondissement de Paris : ", average_traffic_
 print("Trafic annuel dans le 20eme arrondissement de Paris : ", average_traffic_arr20)
 
 # Initialise les couleurs du graphique
-color_types = ['#78C850','#F08030','#6890F0','#A8B820','#A8A878','#A040A0','#F8D030',  
-                '#E0C068','#EE99AC','#C03028','#F85888','#B8A038','#705898','#98D8D8','#7038F8', '#2B5973','#AF186E','#9B972A']
+color_types = ['#D1302F','#427DBD','#FFCD00','#003CA6','#837902','#6EC4E8','#BE418D',  
+                '#FF7E2E','#6ECA97','#FA9ABA','#6ECA97','#E19BDF','#B6BD00','#C9910D','#704b1C', '#007852','#6EC4E8','#62259D']
 
 # Cree le graphique
-sns.barplot(x=data['Correspondance_1'], y=data['Trafic'], data=data, palette=color_types).set_title('Repartions des usagers par ligne')
+sns.barplot(x=data['Ligne'],
+	order=["A", "B", "1", "2", "3", "3bis", "4", "5", "6", "7", "7bis", "8", "9", "10", "11", "12", "13", "14"], 
+	y=data['Trafic'], data=data, palette=color_types).set_title('Repartions des usagers par ligne')
 
-# Rotate x-labels
-plt.xticks(rotation=-45)
 plt.show()
+
+
