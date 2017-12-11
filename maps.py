@@ -1,3 +1,5 @@
+# maps.py
+#
 # Authors :
 # 	Raphael Trancoso
 # 	Cedric Laguerre 
@@ -26,15 +28,15 @@ gmap = gmplot.GoogleMapPlotter.from_geocode("Paris")
 # on optera pour une heatmap des stations
 gmap.scatter(data['stop_lat'], data['stop_lon'], c='b', s=90, marker=False)
 gmap.heatmap(data['stop_lat'], data['stop_lon'], radius=30)
-gmap.draw("mymap.html")
+gmap.draw("stationHeatmap.html")
 
 # on fixe l'échelle minimum et maximun
 minTraffic = data['Trafic'].min()
-maxTraffic = data['Trafic'].max()/4
+maxTraffic = data['Trafic'].max()
 normalize = matplot.colors.Normalize(vmin=minTraffic, vmax=maxTraffic)
 # creation de la carte grace aux latitudes et longitudes de chaque stations
 # chaque point aura une couleur en fonction de son trafic annuel
-mapRATP = data.plot(title="Trafic ferré par station", y='stop_lat', x='stop_lon', c="Trafic", 
+mapRATP = data.plot(title="Trafic annuel par station", y='stop_lat', x='stop_lon', c="Trafic", 
 	norm=normalize, kind="scatter", label='Trafic', cmap='bwr')
 
 plt.legend()

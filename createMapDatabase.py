@@ -1,3 +1,5 @@
+# createMapDatabase.py
+#
 # Authors :
 # 	Raphael Trancoso
 # 	Cedric Laguerre 

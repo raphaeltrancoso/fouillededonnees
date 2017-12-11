@@ -1,3 +1,5 @@
+# stats.py
+#
 # Authors :
 # 	Raphael Trancoso
 # 	Cedric Laguerre 
@@ -10,9 +12,6 @@
 
 # utilisation de la libraire pandas
 import pandas as pd
-import numpy as np
-import scipy as sp
-import sklearn as skl
 
 import matplotlib.pyplot as plt
 import matplotlib as matplot
