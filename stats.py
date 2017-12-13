@@ -5,10 +5,10 @@
 # 	Cedric Laguerre 
 #
 # Projet Fouille de Données 
-# Sujet : trafic réseaux ferrés Paris
+# Sujet : trafic réseaux ferroviaires Paris
 #
 # Données statistiques diverses concernant le trafic 
-# des réseaux ferrés parisien
+# des réseaux ferroviaires parisien
 
 # utilisation de la libraire pandas
 import pandas as pd

@@ -5,7 +5,7 @@
 #   Cedric Laguerre 
 #
 # Projet Fouille de Données 
-# Sujet : trafic réseaux ferrés Paris
+# Sujet : trafic réseaux ferroviaires Paris
 #
 # Cartographie du trafic parisien par station
 # Carte du traffic par station dans Paris -> fichier html
@@ -30,7 +30,8 @@ for row in data.iterrows():
     lat = row[1]['stop_lat']
     lng = row[1]['stop_lon']
     trafic = row[1]['Trafic']
-    station = row[1]['Station'] + " " + str(trafic)
+    ligne = row[1]['Correspondance_1']
+    station = row[1]['Station'] + " ligne " + ligne + " " + str(trafic)
     # rouge
     if(trafic >= 30000000):
     	colorStation = '#ff0000'
@@ -49,9 +50,6 @@ for row in data.iterrows():
     folium.CircleMarker(location=[lat, lng], radius=trafic/750000,
     	color='black', fill=True, fill_color=colorStation, fill_opacity=0.6,
     	popup=station.replace("'"," "), weight=1).add_to(m)
-    # folium.Circle(location=[lat, lng], radius=trafic/100000, 
-    # 	color='#ffffff', fill=True, fill_color='#ffffff', fill_opacity=0.9,
-    # 	popup=station[0:6]).add_to(m)
 plugins.Fullscreen(
     position='topright',
     title='Expand me',
