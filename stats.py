@@ -5,7 +5,7 @@
 # 	Cedric Laguerre 
 #
 # Projet Fouille de Données 
-# Sujet : trafic réseaux ferroviaires Paris
+# Sujet : trafic réseaux ferrés Paris
 #
 # Données statistiques diverses concernant le trafic 
 # des réseaux ferroviaires parisien

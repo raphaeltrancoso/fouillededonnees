@@ -33,7 +33,7 @@ gmap.draw("stationHeatmap.html")
 # on fixe l'échelle minimum et maximun
 minTraffic = data['Trafic'].min()
 # valeur modifiable
-maxTraffic = data['Trafic'].max()/4
+maxTraffic = data['Trafic'].max()
 normalize = matplot.colors.Normalize(vmin=minTraffic, vmax=maxTraffic)
 # creation de la carte grace aux latitudes et longitudes de chaque stations
 # chaque point aura une couleur en fonction de son trafic annuel
